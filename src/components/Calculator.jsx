@@ -29,18 +29,18 @@ const Calculator=()=>{
   }
 
   return(
-    <div className="container">
+    <div className="container" id="main">
       <div className="card">
         <div className="card-header">
           <h1 className="text-center">React Calculator</h1>
         </div>
         <div className="card-body">
-          <h2 >Result:<span className="text-warning">{result}</span></h2>
+          <h2 className="text-center" >Result:<span className="text-warning">{result}</span></h2>
           <form>
             <input type='number' ref={valueRef} 
             className="form-control"  pattern="[0-9]" 
             placeholder="Type Number"/>
-            <div className="d-flex justify-content-space-between mt-3">
+            <div className="d-flex justify-content-evenly mt-3">
               <button type="submit" className="btn btn-primary btn-sm"
                 onClick={add}>Add</button>
               <button type="submit" className="btn btn-secondary btn-sm"
