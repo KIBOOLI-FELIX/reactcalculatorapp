@@ -29,7 +29,7 @@ const Calculator=()=>{
   }
 
   return(
-    <div className="container" id="main">
+    <div className="container">
       <div className="card">
         <div className="card-header">
           <h1 className="text-center">React Calculator</h1>
