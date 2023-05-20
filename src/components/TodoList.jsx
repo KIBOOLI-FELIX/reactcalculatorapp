@@ -10,29 +10,35 @@ const ListForm=(props)=>{
     const submitHandler=(event)=>{
         event.preventDefault();
         props.onAdd(formData);
-       
         setFormData({todos:""});
+       
     }
 
     return(
       <div className="container">
       <form onSubmit={submitHandler}>
-        <fieldset>
-          <input type="text" name="todos"
-           placeholder="Type your to-do items"
-           className="form-control mt-2"
-           value={formData.todos}
-           onChange={handleOnchange}
-          />
-        </fieldset>
-        <button type="submit" className="btn btn-primary btn-sm mt-2"id="btn-add">Add To List</button>
+        <div className="row">
+            <div className="col-6">
+                <fieldset>
+                <input type="text" name="todos"
+                placeholder="Type your to-do items"
+                className="form-control mt-2"
+                value={formData.todos}
+                onChange={handleOnchange}
+                />
+                </fieldset>
+            </div>
+            <div className="col-6">
+             <button type="submit" className="btn btn-primary btn-sm mt-2"id="btn-add">Add To List</button>
+            </div>
+        </div>
+        
       </form>
     </div>
     )
 
 }
 const ListOfTodos=(props)=>{
-    
     return(
         <ul>
             {props.list.map((todos)=>(
