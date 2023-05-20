@@ -10,8 +10,10 @@ const ListForm=(props)=>{
     const submitHandler=(event)=>{
         event.preventDefault();
         props.onAdd(formData);
+       
         setFormData({todos:""});
     }
+
     return(
       <div className="container">
       <form onSubmit={submitHandler}>
@@ -30,13 +32,14 @@ const ListForm=(props)=>{
 
 }
 const ListOfTodos=(props)=>{
+    
     return(
         <ul>
             {props.list.map((todos)=>(
                 <li key={todos.todos}>
                   {todos.todos} <button 
                   className="btn btn-danger btn-sm"
-                  onClick={props.deleteTodo}
+                  onClick={()=>props.handleRemove(todos.todos)}
                   >X</button>
                 </li>
             ))}
@@ -49,14 +52,15 @@ const TodoList=()=>{
     const addTodo=(todos)=>{
         updateAllTodos([...allTodos,todos]);
     }
-    //function to delete list
-    const deleteTodo=()=>{
-        alert("I am about to delete you!")
+    //deleting an item
+    const handleRemove=(remove)=>{
+        const newList=allTodos.filter((item)=>item.todos!==remove)
+        updateAllTodos(newList);
     }
     return(
         <div className="App">
             <ListForm onAdd={addTodo}/>
-            <ListOfTodos list={allTodos} deleteTodo={deleteTodo}/>
+            <ListOfTodos list={allTodos} handleRemove={handleRemove} />
         </div>
     )
 }
